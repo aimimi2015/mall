@@ -32,7 +32,7 @@ public class UserController {
      * @param username the username
      * @param password the password
      * @param session  the session
-     * @return the object
+     * @return the ServerResponse {@link ServerResponse}
      */
 
     @RequestMapping(value = "login", method = RequestMethod.POST)   //处理请求地址映射的注解

@@ -58,7 +58,6 @@
             <version>${org.springframework.version}</version>
         </dependency>
 
-
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
@@ -273,6 +272,14 @@
             <!--<version>2.4</version>-->
             <!--<classifier>jdk15</classifier>-->
         <!--</dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.20</version>
+            <scope>provided</scope>
+        </dependency>
+
+
 
     </dependencies>
 
