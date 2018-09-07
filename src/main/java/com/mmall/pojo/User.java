@@ -13,6 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
+
     private Integer id;
 
     private String username;
@@ -32,6 +33,5 @@ public class User {
     private Date createTime;
 
     private Date updateTime;
-
 
 }

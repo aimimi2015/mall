@@ -29,7 +29,7 @@ public class MD5Util {
      * 返回大写MD5
      *
      * @param origin
-     * @param charsetname
+     * @param charsetname 字符编码
      * @return
      */
     private static String MD5Encode(String origin, String charsetname) {
