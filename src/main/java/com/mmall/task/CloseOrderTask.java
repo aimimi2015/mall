@@ -73,7 +73,7 @@ public class CloseOrderTask {
                 //返回给定的key的旧值，->旧值判断，是否可以获取锁
                 //当key没有旧值时，即key不存在时，返回nil ->获取锁
                 //这里我们set了一个新的value值，获取旧的值。
-                if(getSetResult == null || (getSetResult != null && StringUtils.equals(lockValueStr,getSetResult))){
+                if(getSetResult == null || StringUtils.equals(lockValueStr, getSetResult)){
                     //真正获取到锁
                     closeOrder(Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK);
                 }else{

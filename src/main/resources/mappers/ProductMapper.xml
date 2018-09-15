@@ -202,10 +202,10 @@
         <include refid="Base_Column_List"/>
         FROM mmall_product
         WHERE status = 1
-        <if test ="productName!=null">
+        <if test="productName!=null">
             AND name LIKE #{productName}
         </if>
-        <if test="categoryIdList != null" >
+        <if test="categoryIdList != null">
             and category_id in
             <foreach item="item" index="index" open="(" separator="," close=")" collection="categoryIdList">
                 #{item}
@@ -213,7 +213,6 @@
         </if>
 
     </select>
-
 
 
     <select id="selectStockByProductId" resultType="int" parameterType="java.lang.Integer">

@@ -43,17 +43,6 @@
     <mvc:default-servlet-handler/>
 
 
-    <!--<mvc:interceptors>-->
-        <!--<mvc:interceptor>-->
-            <!--&lt;!&ndash; 对所有的请求拦截使用/** ,对某个模块下的请求拦截使用：/myPath/* &ndash;&gt;-->
-            <!--<mvc:mapping path="/**"/>-->
-            <!--<mvc:exclude-mapping path="/user/register"/>-->
-            <!--<mvc:exclude-mapping path="/user/login"/>-->
-            <!--<mvc:exclude-mapping path="/user/relogin"/>-->
-            <!--<bean class="com.mmall.controller.interceptor.Interceptor"/>-->
-        <!--</mvc:interceptor>-->
-
-    <!--</mvc:interceptors>-->
 
     <!-- 文件上传 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by ${aimimi2015} on 2017/6/9.
+ * 二期已废弃
  */
 @Slf4j
 public class TokenCache {

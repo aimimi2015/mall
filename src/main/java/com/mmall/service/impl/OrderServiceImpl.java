@@ -73,7 +73,8 @@ public class OrderServiceImpl implements IOrderService {
          */
         Configs.init("zfbinfo.properties");
 
-        /** 使用Configs提供的默认参数
+        /**
+         *  使用Configs提供的默认参数
          *  AlipayTradeService可以使用单例或者为静态成员对象，不需要反复new
          */
         tradeService = new AlipayTradeServiceImpl.ClientBuilder().build();
