@@ -3,9 +3,7 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjrt/1.6.11/aspectjrt-1.6.11.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjrt/1.6.11/aspectjrt-1.6.11-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjrt/1.6.11/aspectjrt-1.6.11-sources.jar!/" />
     </SOURCES>

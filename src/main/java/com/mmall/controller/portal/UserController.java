@@ -60,11 +60,7 @@ public class UserController {
 
         return response;
     }
-    @RequestMapping(value = "relogin.do")
-    public ServerResponse<User> relogin() {
 
-        return ServerResponse.creatByErrorMessage("你没登录，被拦截了");
-    }
 
     //为了调试方便 把method = RequestMethod.POST
     @RequestMapping(value = "logout.do")

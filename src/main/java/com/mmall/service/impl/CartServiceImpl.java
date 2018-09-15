@@ -37,11 +37,8 @@ public class CartServiceImpl implements ICartService {
         if (productId == null || count == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAl_ARGUMENT.getCode(), ResponseCode.ILLEGAl_ARGUMENT.getDesc());
         }
-        System.out.println("222");
-
 
         Cart cart = cartMapper.selectCartByUserIdProductId(userId, productId);
-        System.out.println("333");
 
         if (cart == null) {
             //这个产品不在这个购物车里,需要新增一个这个产品的记录
@@ -50,25 +47,18 @@ public class CartServiceImpl implements ICartService {
             cartItem.setChecked(Const.Cart.CHECKED);
             cartItem.setProductId(productId);
             cartItem.setUserId(userId);
-            System.out.println("44");
-
             cartMapper.insert(cartItem);
-            System.out.println("444");
 
         } else {
             //这个产品已经在购物车里了.
             //如果产品已存在,数量相加
             count = cart.getQuantity() + count;
             cart.setQuantity(count);
-            System.out.println("551");
-
             cartMapper.updateByPrimaryKeySelective(cart);
-            System.out.println("555");
 
         }
-        System.out.println("66");
 
-        return this.List(userId);
+        return this.list(userId);
     }
 
     public ServerResponse<CartVo> update(Integer userId, Integer productId, Integer count) {
@@ -81,8 +71,7 @@ public class CartServiceImpl implements ICartService {
             cart.setQuantity(count);
         }
         cartMapper.updateByPrimaryKeySelective(cart);
-        return this.List(userId);
-
+        return this.list(userId);
     }
 
 
@@ -92,16 +81,11 @@ public class CartServiceImpl implements ICartService {
         if (org.apache.commons.collections.CollectionUtils.isEmpty(productList)) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAl_ARGUMENT.getCode(), ResponseCode.ILLEGAl_ARGUMENT.getDesc());
         }
-        System.out.println("222");
-
         cartMapper.deleteByUserIdProductIds(userId, productList);
-        System.out.println("333");
-
-        return this.List(userId);
-
+        return this.list(userId);
     }
 
-    public ServerResponse<CartVo> List(Integer userId) {
+    public ServerResponse<CartVo> list(Integer userId) {
 
         CartVo cartVo = this.getCartVoLimit(userId);
         return ServerResponse.creatBySuccess(cartVo);
@@ -111,7 +95,7 @@ public class CartServiceImpl implements ICartService {
     public ServerResponse<CartVo> selectOrUnselect(Integer userId, Integer productId, Integer checked) {
 
         cartMapper.checkedOrUncheckedProduct(userId, productId, checked);
-        return this.List(userId);
+        return this.list(userId);
 
     }
 
