@@ -10,9 +10,9 @@
 <body>
 
 ${basePath}
+tomcat1111
 
-
-<form name="input" action="${basePath}/user/login" method="post">
+<form name="input" action="${basePath}/user/login.do" method="post">
     <table cellpadding="0" cellspacing="5" border="0">
         <tr>
             <th>账号：</th>

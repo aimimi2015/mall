@@ -7,6 +7,7 @@ import com.mmall.dao.UserMapper;
 import com.mmall.pojo.User;
 import com.mmall.service.IUserService;
 import com.mmall.util.MD5Util;
+import com.mmall.util.RedisShardedPoolUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.concurrent.ConcurrentException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,7 +124,7 @@ public class UserServiceImpl implements IUserService {
         if (resultCount > 0) {
             //说明问题及问题答案是这个用户的,并且是正确的
             String forgetToken = UUID.randomUUID().toString();
-            System.out.println(forgetToken + "   :forgettoken");
+            RedisShardedPoolUtil.setEx(Const.TOKEN_PREFIX+username,forgetToken,60*60*12);
 
             TokenCache.setKey(TokenCache.TOKEN_PREFIX + username, forgetToken);
             return ServerResponse.creatBySuccess(forgetToken);
@@ -144,7 +145,7 @@ public class UserServiceImpl implements IUserService {
             //说明用户不存在 因为用户不存在时return ServerResponse.creatBySuccessMessage("校验成功"); 和28-30行有区别
             return ServerResponse.creatByErrorMessage("用户不存在");
         }
-        String token = TokenCache.getKey(TokenCache.TOKEN_PREFIX + username);
+        String token = RedisShardedPoolUtil.get(Const.TOKEN_PREFIX+username);
         System.out.println(token + "   :token");
 
         if (StringUtils.isBlank(token)) {
@@ -180,7 +181,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public ServerResponse<User> update_information(User user) {
+    public ServerResponse<User> updateInformation(User user) {
         //username是不能被更新的
         //email也要进行校验,校验新的email是不是已经存在,并且存在的email相同的话,不能使我们当前这个用户的
         int resultCount = userMapper.checkEmailByUserId(user.getEmail(), user.getId());

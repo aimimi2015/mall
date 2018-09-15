@@ -31,17 +31,14 @@ public class ShippingServiceImpl implements IShippingService{
             return ServerResponse.creatBySuccessMessage("新建地址成功",result);
         }
         return ServerResponse.creatByErrorMessage("新建地址失败");
-
     }
 
     public ServerResponse<String> del(Integer userId, Integer shippingId){
         int resultCount = shippingMapper.deleteByPrimaryKey(shippingId);
         if (resultCount>0){
             return ServerResponse.creatBySuccess("删除地址成功");
-
         }
         return ServerResponse.creatByErrorMessage("删除地址失败");
-
     }
 
     public ServerResponse<String> update(Integer userId, Shipping shipping){
@@ -51,15 +48,14 @@ public class ShippingServiceImpl implements IShippingService{
             return ServerResponse.creatBySuccess("更新地址成功");
         }
         return ServerResponse.creatByErrorMessage("更新地址失败");
-
     }
+
     public ServerResponse<Shipping> select(Integer userId,Integer shippingId){
         Shipping shipping = shippingMapper.selectByShippingIdUserId(userId,shippingId);
         if (shipping==null){
             return ServerResponse.creatByErrorMessage("无法查询到该地址");
         }
         return ServerResponse.creatBySuccessMessage("查询地址成功",shipping);
-
     }
 
     public ServerResponse<PageInfo> list(Integer userId,int pageNum,int pageSize){
